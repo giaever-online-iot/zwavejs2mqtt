@@ -83,6 +83,8 @@ apps:
     command: bin/de-daemonize
   restart:
     command: bin/restart
+  copy-2-zui:
+    command: bin/cpy-2-zui
 
 layout:
   /usr/local/share/.cache/yarn:
@@ -91,11 +93,12 @@ layout:
     symlink: $SNAP/lib/node_modules
 
 plugs:
-  store-dir:
+  zui-store:
     interface: content
-    content: store-dir 
+    content: zui-store 
     target: $SNAP_COMMON/zui-store
-    default-provider: zwave-js-ui
+    # Wait with the default provider
+    #default-provider: zwave-js-ui
 
 parts:
   zwavejs2mqtt:
