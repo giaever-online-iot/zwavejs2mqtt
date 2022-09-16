@@ -90,13 +90,6 @@ layout:
   /usr/local/share/.yarn:
     symlink: $SNAP/lib/node_modules
 
-slots: # ZUI offers new config dir within data
-  store-dir:
-    interface: content
-    content: store-dir
-    write:
-      - $SNAP_DATA
-
 plugs:
   store-dir:
     interface: content
