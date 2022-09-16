@@ -39,15 +39,28 @@ function same_network_key {
     return 0
 }
 
+function cpy_2_zui {
+	if snapctl is-connected store-dir; then
+		cp -rf "${SNAP_DATA}/"* "${SNAP_COMMON}/zui-store"
+		if [ $? -ne 0 ]; then
+			return 1;
+		fi
+	else
+		echo "Cannot copy config: Missing connection «store-dir» (offered by <zwave-js-ui>: `snap install zwave-js-ui`)." >&2
+		return 1
+	fi
+	return 0;
+}
+
 function plug_connected {
     if ! snapctl is-connected "${1}"; then
         echo "Missing plug: «${1}»" >&2
         echo "Connect with:"
-	if [ "${1}" == "serial-port" ]; then
-		echo "$ sudo snap connect ${SNAP_NAME}:${1} <slot name>"
-	else
-		echo "$ sudo snap connect ${SNAP_NAME}:${1}"
-	fi
+		if [ "${1}" == "serial-port" ]; then
+			echo "$ sudo snap connect ${SNAP_NAME}:${1} <slot name>"
+		else
+			echo "$ sudo snap connect ${SNAP_NAME}:${1}"
+		fi
         return 1
     fi
     return 0
