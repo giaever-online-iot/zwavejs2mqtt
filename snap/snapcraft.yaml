@@ -104,7 +104,7 @@ parts:
   zwavejs2mqtt:
     after: [nodejs, dependencies]
     plugin: dump
-    source: https://github.com/zwave-js/zwavejs2mqtt.git
+    source: https://github.com/zwave-js/zwave-js-ui.git
     #source-branch: "master"
     #source-tag: "v7.1.0"
     source-tag: $SNAPCRAFT_PROJECT_VERSION
