@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source $SNAP/helper/functions
+
+require_root
+
+cpy_2_zui && snapctl stop "${SNAP_NAME}" && snapctl disable "${SNAP_NAME}"
