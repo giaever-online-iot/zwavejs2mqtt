@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ZUI_STORE="${SNAP_COMMON}/zui-store"
+echo "$(ls -al ${ZUI_STORE})"
 
 if [ ! -d "${ZUI_STORE}" ]; then
 	echo "Missing store-dir for ZUI. Failed, exiting...." >&2
