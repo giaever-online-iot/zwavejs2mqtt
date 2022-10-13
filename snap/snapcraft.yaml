@@ -95,7 +95,7 @@ layout:
 plugs:
   zui-store:
     interface: content
-    content: store-dir 
+    content: vscs-content
     target: $SNAP_COMMON/zui-store
     # Wait with the default provider
     #default-provider: zwave-js-ui
