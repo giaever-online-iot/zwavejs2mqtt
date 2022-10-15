@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-cpy_2_zui 
-if [ $? -eq 0 ]; then
-	sudo snap stop --disable "${SNAP_NAME}.${SNAP_NAME}"
-else
-	exit 1
-fi
+
+$SNAP/bin/cpy_2_zui
+
 logger "Connected ZUI (from: z2m)"
