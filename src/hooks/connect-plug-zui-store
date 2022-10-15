@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-$SNAP/bin/cpy_2_zui
+$SNAP/bin/cpy-2-zui
 
 logger "Connected ZUI (from: z2m)"
