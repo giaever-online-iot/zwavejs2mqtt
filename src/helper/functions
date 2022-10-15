@@ -50,8 +50,10 @@ function cpy_2_zui {
 				echo "Failed copying data from ${SNAP_COMMON}/zui-store" >&2
 				return 1
 			fi
+			mv "${SNAP_COMMON}/zui-store/*zwave*.{log,json}" "${SNAP_COMMON}/zui-store/logs"
 			mv "${SNAP_COMMON}/zui-store/logs" "${SNAP_COMMON}/zui-store/z2m-logs"
 			rm -rf "${SNAP_COMMON}/zui-store/.ext-config"
+
 		else
 			echo "Missing directory ${SNAP_COMMON}/zui-store, cannot write to it. Exiting..." >&2
 			exit 1
