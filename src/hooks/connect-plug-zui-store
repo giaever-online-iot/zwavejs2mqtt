@@ -6,6 +6,8 @@ echo "$(ls -al ${ZUI_STORE})" >&2
 if [ ! -d "${ZUI_STORE}" ]; then
 	echo "Missing store-dir for ZUI. Failed, exiting...." >&2
 	exit 1
+else 
+	"Have store dir, copy over" >&2 
 fi
 
 if [ $(ls "${ZUI_STORE}" | wc -l) -eq 0 ]; then
