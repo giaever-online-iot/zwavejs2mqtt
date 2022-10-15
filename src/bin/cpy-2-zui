@@ -4,4 +4,4 @@ source $SNAP/helper/functions
 
 require_root
 
-cpy_2_zui && snapctl stop "${SNAP_NAME}" && snapctl disable "${SNAP_NAME}"
+cpy_2_zui && snapctl stop "${SNAP_NAME}" && snapctl stop --disable "${SNAP_NAME}"

@@ -41,21 +41,27 @@ function same_network_key {
 
 function cpy_2_zui {
 	if snapctl is-connected zui-store; then
-		if [ -d "${SNAP_COMMON}/zui-store" ]; then
+		if [ "$(ls ${SNAP_COMMON}/zui-store) | wc -l" -ne 0 ]; then
+			echo "The zui-store (${SNAP_COMMON}/zui-store) is not empty, exiting..." >&2
+			exit 1
+		elif [ -d "${SNAP_COMMON}/zui-store" ]; then
 			cp -rf "${SNAP_DATA}/"* "${SNAP_COMMON}/zui-store"
 			if [ $? -ne 0 ]; then
-				echo "Failed copying data from ${SNAP_COMMON}/zui-store";
-				return 1;
+				echo "Failed copying data from ${SNAP_COMMON}/zui-store" >&2
+				return 1
 			fi
+			mv "${SNAP_COMMON}/zui-store/logs" "${SNAP_COMMON}/zui-store/z2m-logs"
 		else
 			echo "Missing directory ${SNAP_COMMON}/zui-store, cannot write to it. Exiting..." >&2
-			exit 1;
+			exit 1
 		fi
 	else
-		echo "Cannot copy config: Missing connection «store-dir» (offered by <zwave-js-ui>: `snap install zwave-js-ui`)." >&2
+		echo "Can not copy config: Missing connection «store-dir» (offered by <zwave-js-ui>: `snap install zwave-js-ui`)." >&2
+		echo "Please install and connect with:" 1>&2
+		echo "$ snap connect ${SNAP_NAME}:zui-store zwave-js-ui:store-dir" >&2
 		return 1
 	fi
-	return 0;
+	return 0
 }
 
 function plug_connected {
