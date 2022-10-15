@@ -51,6 +51,7 @@ function cpy_2_zui {
 				return 1
 			fi
 			mv "${SNAP_COMMON}/zui-store/logs" "${SNAP_COMMON}/zui-store/z2m-logs"
+			rm -rf "${SNAP_COMMON}/zui-store/.ext-config"
 		else
 			echo "Missing directory ${SNAP_COMMON}/zui-store, cannot write to it. Exiting..." >&2
 			exit 1
