@@ -41,7 +41,7 @@ function same_network_key {
 
 function cpy_2_zui {
 	if snapctl is-connected zui-store; then
-		if [ "$(ls "${SNAP_COMMON}/zui-store") | wc -l" -ne 0 ]; then
+		if [ "$(ls "${SNAP_COMMON}/zui-store" | wc -l)" -ne 0 ]; then
 			echo "The zui-store (${SNAP_COMMON}/zui-store) is not empty, exiting..." >&2
 			exit 1
 		elif [ -d "${SNAP_COMMON}/zui-store" ]; then
