@@ -92,13 +92,11 @@ layout:
   /usr/local/share/.yarn:
     symlink: $SNAP/lib/node_modules
 
-plugs:
-  zui-store:
-    interface: content
-    content: vscs-content
-    target: $SNAP_COMMON/zui-store
-    # Wait with the default provider
-    #default-provider: zwave-js-ui
+#plugs:
+#  zui-store:
+#    interface: content
+#    content: vscs-content
+#    target: $SNAP_COMMON/zui-store
 
 slots: # ZUI offers new config dir within data
   store-dir:
