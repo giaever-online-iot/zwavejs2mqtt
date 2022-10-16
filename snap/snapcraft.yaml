@@ -100,6 +100,13 @@ plugs:
     # Wait with the default provider
     #default-provider: zwave-js-ui
 
+slots: # ZUI offers new config dir within data
+  store-dir:
+    interface: content
+    content: vscs-content
+    write:
+      - $SNAP_DATA
+
 parts:
   zwavejs2mqtt:
     after: [nodejs, dependencies]
