@@ -92,18 +92,11 @@ layout:
   /usr/local/share/.yarn:
     symlink: $SNAP/lib/node_modules
 
-#plugs:
-#  zui-store:
-#    interface: content
-#    content: vscs-content
-#    target: $SNAP_COMMON/zui-store
-
-slots: # ZUI offers new config dir within data
-  store-dir:
+plugs:
+  zui-store:
     interface: content
     content: vscs-content
-    write:
-      - $SNAP_DATA
+    target: $SNAP_COMMON/zui-store
 
 parts:
   zwavejs2mqtt:
