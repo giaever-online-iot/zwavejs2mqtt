@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+snapctl set :zui-store plugattribute="$(snapctl get -d server mqtt session)"
