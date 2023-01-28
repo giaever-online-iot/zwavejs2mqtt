@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-snapctl set :zui-store plugattribute="$(snapctl get -d server mqtt session)"
+snapctl set :zui-store z2mconfig="$(snapctl get -d server mqtt session)"
+snapctl set :zui-store z2mserial="$(snapctl is-connected serial-port && echo 1 || echo 0)"

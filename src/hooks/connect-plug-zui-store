@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-snapctl get --slot :zui-store serial > "${SNAP_DATA}.zui-serial"
 $SNAP/bin/cpy-2-zui
 
 logger "Connected ZUI (from: z2m)"
