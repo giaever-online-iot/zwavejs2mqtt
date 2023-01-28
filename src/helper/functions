@@ -15,7 +15,7 @@ function ensure_zwavejs_config {
 
 function get_network_key {
     if [ -f "${SNAP_DATA}/settings.json" ]; then
-        SETTINGS_KEY=$(jq '.zwave.networkKey' -r ${SN`AP_DATA}/settings.json)
+        SETTINGS_KEY=$(jq '.zwave.networkKey' -r "${SNAP_DATA}/settings.json")
         if [ "${SETTINGS_KEY}" != "" ] && [ "${1}" != "${SETTINGS_KEY}" ]; then
             echo "${SETTINGS_KEY}"
             return 1
