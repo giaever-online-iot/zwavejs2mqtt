@@ -4,5 +4,17 @@ source $SNAP/helper/functions
 
 require_root
 
-cpy_2_zui && snapctl stop "${SNAP_NAME}" && snapctl stop --disable "${SNAP_NAME}"
-echo "Disabled ${SNAP_NAME}"
+cpy_2_zui
+
+if [ $? -ne 0 ]; then
+	echo "Failed, exiting."
+	exit 1
+fi
+
+if snapctl is-connected serial-port; then
+	echo "Serial-port is connected, which require manual configuration in zwave-js-ui"
+else
+	snapctl stop "${SNAP_NAME}" && snapctl stop --disable "${SNAP_NAME}"
+	echo "Disabled ${SNAP_NAME}, you can now enable zwave-js-ui"
+fi
+
