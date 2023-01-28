@@ -54,6 +54,7 @@ function cpy_2_zui {
 			mv "${SNAP_COMMON}/zui-store/zwave"*.{log,json} "${SNAP_COMMON}/zui-store/logs/zwave-js"
 			mv "${SNAP_COMMON}/zui-store/logs" "${SNAP_COMMON}/zui-store/.old-z2m-logs"
 			rm -rf "${SNAP_COMMON}/zui-store/.ext-config"
+			snapctl get -d server mqtt session > "${SNAP_COMMON}/zui-store/snap.config"
 
 		else
 			echo "Missing directory ${SNAP_COMMON}/zui-store, cannot write to it. Exiting..." >&2
