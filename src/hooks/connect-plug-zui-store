@@ -13,7 +13,7 @@ if snapctl is-connected zui-store; then
 		exit 1
 	elif [ -d "${ZUI_STORE}" ]; then
 		lprint "ZUI-store is empty, copying over data: $(ls "${SNAP_DATA}") to «${ZUI_STORE}»"
-		cp -rf "${SNAP_DATA}"* "${ZUI_STORE}"
+		cp -rf "${SNAP_DATA}/"* "${ZUI_STORE}"
 		rm -rf "${ZUI_STORE}/.ext-config"
 		mv -rf "${ZUI_STORE}/logs" "${ZUI_STORE}/.z2m-logs"
 		if [[ ! -d "${ZUI_STORE}/.z2m-logs" ]]; then
