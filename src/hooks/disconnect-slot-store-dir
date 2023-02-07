@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-export DAEMONIZED=1
-source $SNAP/helper/functions
-
-lprint "Disconnect plug"
