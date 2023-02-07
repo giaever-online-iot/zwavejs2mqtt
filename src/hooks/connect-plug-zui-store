@@ -6,3 +6,4 @@ source $SNAP/helper/functions
 $SNAP/bin/cpy-2-zui
 
 lprint "Connected ZUI (from: z2m)"
+exit 1
