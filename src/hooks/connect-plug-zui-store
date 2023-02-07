@@ -20,7 +20,8 @@ if snapctl is-connected zui-store; then
 			mkdir "${ZUI_STORE}/.z2m-logs"
 		fi
 		mv -rf "${ZUI_STORE}/zwave"*.{log,json} "${ZUI_STORE}/.z2m-logs"
-		lprint "Everything seems to be in place now..."
+		lprint "Everything seems to be in place now... Exit connection the initiate the daemonizing voting"
+		exit 1
 	else
 		lprint "Plug/slot = zui-store is connected, but «${ZUI_STORE}» is missing... WHY! 🤷"
 	fi
