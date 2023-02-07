@@ -3,7 +3,12 @@
 export DAEMONIZED=1
 source $SNAP/helper/functions
 
-SNAP_CONFIG="$(snapctl get -d server mqtt session)"
+RAND="$(cat /dev/urandom | LC_ALL=C tr -dc '0-9A-F' | fold -w 32 | head -n 1)"
+snapctl set transfer="${RAND}"
+snapctl set :zui-store z2mrand="${RAND}"
+lprint "Transfer random: ${RAND}"
+
+SNAP_CONFIG="$(snapctl get -d server mqtt session transfer)"
 snapctl set :zui-store z2mconfig="${SNAP_CONFIG}"
 
 lprint "Export snap config over plug connection: ${SNAP_CONFIG}" 
