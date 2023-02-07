@@ -11,4 +11,4 @@ lprint "Export snap config over plug connection: ${SNAP_CONFIG}"
 USING_SERIAL="$(snapctl is-connected serial-port && echo 1 || echo 0)"
 snapctl set :zui-store z2mserial="${USING_SERIAL}"
 
-lprint "Share serial-port plug be used ($([ "${USING_SERIAL}" -eq 1 ] && echo "True" || "False")) over plug connection."
+lprint "Share serial-port plug be used (${USING_SERIAL}) over plug connection."

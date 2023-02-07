@@ -3,7 +3,12 @@
 export DAEMONIZED=1
 source $SNAP/helper/functions
 
-$SNAP/bin/cpy-2-zui
+#$SNAP/bin/cpy-2-zui
 
-lprint "Connected ZUI (from: z2m)"
-exit 1
+if snapctl is-connected zui-store; then
+	lprint "ZUI-store is connected"
+else
+	lprint "ZUI-store is NOT connected"
+fi
+
+#lprint "Connected ZUI (from: z2m)"
