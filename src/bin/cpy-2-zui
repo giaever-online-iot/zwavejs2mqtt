@@ -4,23 +4,23 @@ source $SNAP/helper/functions
 
 require_root
 
-cpy_2_zui
+#cpy_2_zui
 
-if [ $? -ne 0 ]; then
-	echo "Failed, exiting."
-	exit 1
-fi
+#if [ $? -ne 0 ]; then
+#	echo "Failed, exiting."
+#	exit 1
+#fi
 
-if snapctl is-connected serial-port; then
-	lprint "Serial-port is connected, which require manual configuration in zwave-js-ui"
-elif [ -s "${SNAP_COMMON}/zui-store/.hook.install" ]; then
-	if [ "$(cat "${SNAP_COMMON}/.hook.install")" == "enable" ]; then
-		snapctl stop "${SNAP_NAME}" && snapctl stop --disable "${SNAP_NAME}"
-		lprint "Disabled ${SNAP_NAME} and zwave-js-ui should be enabled."
-	else
-		lprint "ZUI is set to be disabled, and wont disable ${SNAP_NAME}.".
-	fi
-else
-	lprint "Wont disable Z2M"
-fi
+#if snapctl is-connected serial-port; then
+#	lprint "Serial-port is connected, which require manual configuration in zwave-js-ui"
+#elif [ -s "${SNAP_COMMON}/zui-store/.hook.install" ]; then
+#	if [ "$(cat "${SNAP_COMMON}/.hook.install")" == "enable" ]; then
+#		snapctl stop "${SNAP_NAME}" && snapctl stop --disable "${SNAP_NAME}"
+#		lprint "Disabled ${SNAP_NAME} and zwave-js-ui should be enabled."
+#	else
+#		lprint "ZUI is set to be disabled, and wont disable ${SNAP_NAME}.".
+#	fi
+#else
+#	lprint "Wont disable Z2M"
+#fi
 

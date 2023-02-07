@@ -6,9 +6,17 @@ source $SNAP/helper/functions
 #$SNAP/bin/cpy-2-zui
 
 if snapctl is-connected zui-store; then
+	ZUI_STORE="${SNAP_COMMON}/zui-store"
 	lprint "ZUI-store is connected"
+	if [ "$(ls "${ZUI_STORE}" | wc -l)" -ne 0 ]; then
+		lprint "ZUI-store (${ZUI_STORE}) is not empty: $(ls "${ZUI_STORE}")"
+		exit 1
+	else
+		lprint "ZUI-store is empty, copying over data: $(ls "${SNAP_DATA}")"
+	fi
 else
-	lprint "ZUI-store is NOT connected"
+	lprint "ZUI-store is NOT connected, but why did we end up here then??"
 fi
 
 #lprint "Connected ZUI (from: z2m)"
+#
