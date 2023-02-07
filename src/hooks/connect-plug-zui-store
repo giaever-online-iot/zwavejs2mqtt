@@ -19,7 +19,7 @@ if snapctl is-connected zui-store; then
 		if [[ ! -d "${ZUI_STORE}/.z2m-logs" ]]; then
 			mkdir "${ZUI_STORE}/.z2m-logs"
 		fi
-		mv -f "${ZUI_STORE}/zwave"*.{log,json} "${ZUI_STORE}/.z2m-logs"
+		mv -f "${ZUI_STORE}/zwave"*.{log,json} "${ZUI_STORE}/.z2m-logs" 2> /dev/null; true
 		lprint "Everything seems to be in place now... Exit connection the initiate the daemonizing voting"
 		exit 1
 	else
