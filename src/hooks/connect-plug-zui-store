@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export DAEMONIZED=1
+source $SNAP/helper/functions
+
 $SNAP/bin/cpy-2-zui
 
-logger "Connected ZUI (from: z2m)"
+lprint "Connected ZUI (from: z2m)"

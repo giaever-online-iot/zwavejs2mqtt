@@ -2,17 +2,6 @@
 
 source $SNAP/helper/functions
 
-if [ -z "${DAEMONIZED}" ]; then
-    DAEMONIZED=0
-fi
-
-function lprint {
-    if [ ${DAEMONIZED} -eq 0 ]; then
-        echo ${1}
-    else
-        logger "${SNAP_NAME}: ${1}"
-    fi
-}
 
 # WITH S0+n NETWORK KEY IS NOT USED ANYMORE
 #export NETWORK_KEY=$(snapctl get network.key)
