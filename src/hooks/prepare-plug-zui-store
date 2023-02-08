@@ -3,7 +3,7 @@
 export DAEMONIZED=1
 source $SNAP/helper/functions
 
-RAND="$(snapctl get -d session.secret)"
+RAND="$(snapctl get session.secret)"
 snapctl set :zui-store transfer="${RAND}"
 lprint "Secret: ${RAND}"
 
