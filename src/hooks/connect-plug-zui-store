@@ -16,23 +16,21 @@ if snapctl is-connected zui-store; then
 		cp -rf "${SNAP_DATA}/"* "${ZUI_STORE}"
 		rm -rf "${ZUI_STORE}/.ext-config"
 		mv -f "${ZUI_STORE}/logs" "${ZUI_STORE}/.z2m-logs"
-		if [[ ! -d "${ZUI_STORE}/.z2m-logs" ]]; then
-			mkdir "${ZUI_STORE}/.z2m-logs"
-		fi
-		mv -f "${ZUI_STORE}/zwave"*.{log,json} "${ZUI_STORE}/.z2m-logs" 2> /dev/null; true
+		mv -f "${ZUI_STORE}/zwave"*.{log,json} "${ZUI_STORE}/.z2m-logs"
 		lprint "Everything seems to be in place now... Exit connection the initiate the daemonizing voting"
 		lprint "ZUI-STORE: $(ls -a "${ZUI_STORE}")"
 		SERVICE_FILE="${ZUI_STORE}/.install.hook.service"
 		if [ -s "${SERVICE_FILE}" ]; then
 			if [ "$(cat "${SERVICE_FILE}")" == "enable" ]; then
 				lprint "ZUI will be enabled. Disable ${SNAP_NAME}."
+				snapctl stop --disable "${SNAP_NAME}.${SNAP_NAME}"
+				exit 1
 			else
 				lprint "ZUI won't be enabled. Keep ${SNAP_NAME} enabled."
 			fi
 		else
 			lprint "The service file for ZUI (${SERVICE_FILE}) is missing. Keep ${SNAP_NAME} enabled."
 		fi
-		exit 1
 	else
 		lprint "Plug/slot = zui-store is connected, but «${ZUI_STORE}» is missing... WHY! 🤷"
 	fi
