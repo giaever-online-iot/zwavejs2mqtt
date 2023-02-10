@@ -23,7 +23,7 @@ if snapctl is-connected zui-store; then
 		if [ -s "${SERVICE_FILE}" ]; then
 			if [ "$(cat "${SERVICE_FILE}")" == "enable" ]; then
 				lprint "ZUI will be enabled. Disable ${SNAP_NAME}."
-				snapctl stop --disable "${SNAP_NAME}.${SNAP_NAME}"
+				touch "${SNAP_COMMON}/.eol"
 				exit 1
 			else
 				lprint "ZUI won't be enabled. Keep ${SNAP_NAME} enabled."

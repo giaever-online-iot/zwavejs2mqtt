@@ -2,6 +2,11 @@
 
 source $SNAP/helper/functions
 
+if [ -s "${SNAP_COMMON}/.eol" ]; then
+	lprint "Met EOL, disabling... Use ZUI instead «zwave-js-ui», which already should be installed and enabled on your system."
+	snapctl stop --disable "${SNAP_NAME}.${SNAP_NAME}"
+	exit 1
+fi
 
 # WITH S0+n NETWORK KEY IS NOT USED ANYMORE
 #export NETWORK_KEY=$(snapctl get network.key)
