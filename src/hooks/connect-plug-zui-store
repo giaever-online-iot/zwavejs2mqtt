@@ -6,6 +6,10 @@ source $SNAP/helper/functions
 #$SNAP/bin/cpy-2-zui
 
 if snapctl is-connected zui-store; then
+	if [ -s "${SNAP_COMMON}/.eol" ]; then
+		lprint "Met EOL. ZUI «zwave-js-ui» should already be installed, configured and enabled on your system."
+		exit 1
+	fi
 	ZUI_STORE="${SNAP_COMMON}/zui-store"
 	lprint "ZUI-store is connected"
 	if [ "$(ls "${ZUI_STORE}" | wc -l)" -ne 0 ]; then
